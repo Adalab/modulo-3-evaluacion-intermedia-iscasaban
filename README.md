@@ -2,7 +2,7 @@
 
 The exercise consists of developing a simple web page with React.
 
-Link: ()
+Link: (http://beta.adalab.es/modulo-3-evaluacion-intermedia-iscasaban/)
 
 We are going to keep track of the classmates that we are in this promo and point out the specialty of each one. We want to create an application to manage Adalab students and we are going to do it with React!!!
 
