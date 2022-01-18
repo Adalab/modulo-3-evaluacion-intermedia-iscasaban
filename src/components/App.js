@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import callToApi from '../services/api';
 
 function App() {
-  const [adalabersData, setAdalabersData] = useState('');
+  const [adalabersData, setAdalabersData] = useState([]);
 
   useEffect(() => {
     callToApi().then((response) => {
@@ -33,13 +33,7 @@ function App() {
         </thead>
         <tbody>
           {/* <!-- Primera fila --> */}
-          <tr>{htmlAdalabers}</tr>
-          {/* <!-- Segunda fila --> */}
-          <tr>
-            <td>Columa 1 de la fila 2</td>
-            <td>Columa 2 de la fila 2</td>
-            <td>Columa 3 de la fila 2</td>
-          </tr>
+          {htmlAdalabers}
         </tbody>
       </table>
     </div>
