@@ -4,13 +4,14 @@ const callToApi = () => {
   )
     .then((response) => response.json())
     .then((response) => {
+      console.log(response);
       const result = {
         id: response.id,
         name: response.name,
         counselor: response.counselor,
         speciality: response.speciality,
       };
-      return result;
+      return response.results;
     });
 };
 
