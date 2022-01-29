@@ -4,12 +4,49 @@ import callToApi from '../services/api';
 
 function App() {
   const [adalabersData, setAdalabersData] = useState([]);
+  const [newAdalaber, setNewAdalaber] = useState({
+    name: '',
+    counselor: '',
+    speciality: '',
+  });
 
   useEffect(() => {
     callToApi().then((response) => {
-      setAdalabersData(response);
+      setAdalabersData(response.results);
     });
   }, []);
+
+  const handleChangeName = (ev) => {
+    setNewAdalaber({
+      ...newAdalaber,
+      name: ev.currentTarget.value,
+    });
+  };
+
+  const handleChangeCounselor = (ev) => {
+    setNewAdalaber({
+      ...newAdalaber,
+      counselor: ev.currentTarget.value,
+    });
+  };
+
+  const handleChangespeciality = (ev) => {
+    setNewAdalaber({
+      ...newAdalaber,
+      speciality: ev.currentTarget.value,
+    });
+  };
+
+  const handleClickNewAdalaber = () => {
+    newAdalaber.id = adalabersData.length;
+
+    setAdalabersData([...adalabersData, newAdalaber]);
+    setNewAdalaber({
+      name: '',
+      counselor: '',
+      speciality: '',
+    });
+  };
 
   const htmlAdalabers = adalabersData.map((adalabersData, index) => (
     <tr key={index}>
@@ -21,8 +58,8 @@ function App() {
 
   return (
     <div>
-      <h1>Adalabers</h1>
-      <table>
+      <h1 className="title">Adalabers</h1>
+      <table className="adalabers__list">
         {/* <!-- Fila de cabecera --> */}
         <thead>
           <tr>
@@ -38,18 +75,21 @@ function App() {
       </table>
       <section>
         <h2 className="subtitle">Añadir una Adalaber</h2>
-
-        <form action="" className="form__title">
+        <form
+          action=""
+          className="form__title"
+          onSubmit={(ev) => ev.preventDefault()}
+        >
           <label className="form__text" htmlFor="name">
             Nombre:
             <input
               type="text"
               className="form__input"
-              //value={}
+              value={newAdalaber.name}
               name="name"
               id="id"
               placeholder="Patatita"
-              //onChange={}
+              onChange={handleChangeName}
             />
           </label>
           <label className="form__text" htmlFor="counselor">
@@ -57,26 +97,28 @@ function App() {
             <input
               type="text"
               className="form__input"
-              //value={}
+              value={newAdalaber.counselor}
               name="name"
               id="id"
               placeholder="Maestro Jedi"
-              //onChange={}
+              onChange={handleChangeCounselor}
             />
           </label>
-          <label className="form__text" htmlFor="specialty">
+          <label className="form__text" htmlFor="speciality">
             Especialidad:
             <input
               type="text"
               className="form__input"
-              //value={}
+              value={newAdalaber.speciality}
               name="name"
               id="id"
               placeholder="Tu superpoder"
-              //onChange={}
+              onChange={handleChangespeciality}
             />
           </label>
-          <button className="form__btn">Añadir una nueva Adalaber</button>
+          <button className="form__btn" onClick={handleClickNewAdalaber}>
+            Añadir una nueva Adalaber
+          </button>
         </form>
       </section>
     </div>

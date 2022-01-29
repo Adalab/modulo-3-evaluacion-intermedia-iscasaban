@@ -1,4 +1,41 @@
 .page {
-    padding: 1rem;
-  }
-  
+  padding: 1rem;
+}
+
+.title {
+  margin-top: 1.5rem;
+  padding-bottom: 1rem;
+  text-align: center;
+  font-size: 2rem;
+}
+.adalabers__list {
+  margin-top: 1rem;
+  margin-left: 10%;
+}
+
+.subtitle {
+  margin-top: 1rem;
+  text-align: left;
+  font-size: 1.25rem;
+  margin-left: 5%;
+  margin-bottom: 1rem;
+}
+.form__title {
+  margin-left: 5%;
+}
+.form__text {
+  font-size: 0.9rem;
+  display: block;
+}
+.form__input {
+  margin-left: 1rem;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+.form__btn {
+  margin-top: 1rem;
+  font-size: 0.7rem;
+  padding: 0.1rem 0.9rem;
+  margin-bottom: 3rem;
+  background-color: aquamarine;
+}
