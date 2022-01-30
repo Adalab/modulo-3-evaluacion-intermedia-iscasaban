@@ -11,14 +11,22 @@
 .adalabers__list {
   margin-top: 1rem;
   margin-left: 10%;
+  width: 80%;
+  padding-bottom: 15px;
 }
-
 .subtitle {
-  margin-top: 1rem;
+  margin-top: 2rem;
   text-align: left;
   font-size: 1.25rem;
   margin-left: 5%;
   margin-bottom: 1rem;
+}
+.filters {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: right;
+  margin-right: 15%;
 }
 .form__title {
   margin-left: 5%;
@@ -26,6 +34,7 @@
 .form__text {
   font-size: 0.9rem;
   display: block;
+  margin-left: 0.5rem;
 }
 .form__input {
   margin-left: 1rem;
@@ -38,4 +47,13 @@
   padding: 0.1rem 0.9rem;
   margin-bottom: 3rem;
   background-color: aquamarine;
+  color: grey;
+  border-style: hidden;
+  border-radius: 3px;
+  height: 25px;
+}
+.form__btn:hover {
+  background-color: grey;
+  color: white;
+  font-weight: bold;
 }

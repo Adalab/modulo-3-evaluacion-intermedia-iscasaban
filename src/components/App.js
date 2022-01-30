@@ -9,6 +9,8 @@ function App() {
     counselor: '',
     speciality: '',
   });
+  const [filterName, setFilterName] = useState('');
+  const [filterCounselor, setFilterCounselor] = useState('All');
 
   useEffect(() => {
     callToApi().then((response) => {
@@ -48,19 +50,73 @@ function App() {
     });
   };
 
-  const htmlAdalabers = adalabersData.map((adalabersData, index) => (
-    <tr key={index}>
-      <td>{adalabersData.name}</td>
-      <td>{adalabersData.counselor}</td>
-      <td>{adalabersData.speciality}</td>
-    </tr>
-  ));
+  const handleChangeFilterName = (ev) => {
+    setFilterName(ev.currentTarget.value);
+  };
+
+  const handleChangeFilterCounselor = (ev) => {
+    setFilterCounselor(ev.currentTarget.value);
+  };
+
+  const htmlAdalabers = adalabersData
+    .filter((eachAdalaber) =>
+      eachAdalaber.name
+        .toLocaleLowerCase()
+        .includes(filterName.toLocaleLowerCase())
+    )
+    .filter((eachAdalaber) => {
+      if (filterCounselor === 'All') {
+        return true;
+      } else if (filterCounselor === eachAdalaber.counselor) {
+        return true;
+      } else {
+        return false;
+      }
+    })
+    .map((adalabersData, index) => (
+      <tr key={index}>
+        <td>{adalabersData.name}</td>
+        <td>{adalabersData.counselor}</td>
+        <td>{adalabersData.speciality}</td>
+      </tr>
+    ));
 
   return (
     <div>
       <header>
-        <h1 className="title">Adalabers</h1>
+        <h1 className="title">Adalabers Promo 🥔</h1>
       </header>
+      <main>
+        <form action="" className="filters">
+          <label htmlFor="name" className="form__text">
+            Nombre:
+            <input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Ej. Patatita"
+              className="form__input"
+              value={filterName}
+              onChange={handleChangeFilterName}
+            />
+          </label>
+          <label htmlFor="counselor" className="form__text">
+            Escoge una tutora:
+            <select
+              className="form__input"
+              name="counselor"
+              id="counselor"
+              onChange={handleChangeFilterCounselor}
+              value={filterCounselor}
+            >
+              <option value="All">Cualquiera</option>
+              <option value="Dayana">Dayana</option>
+              <option value="Iván">Iván</option>
+              <option value="Yanelis">Yanelis</option>
+            </select>
+          </label>
+        </form>
+      </main>
       <table className="adalabers__list">
         {/* <!-- Fila de cabecera --> */}
         <thead>
