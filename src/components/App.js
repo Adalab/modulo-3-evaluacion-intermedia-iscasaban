@@ -58,7 +58,9 @@ function App() {
 
   return (
     <div>
-      <h1 className="title">Adalabers</h1>
+      <header>
+        <h1 className="title">Adalabers</h1>
+      </header>
       <table className="adalabers__list">
         {/* <!-- Fila de cabecera --> */}
         <thead>
